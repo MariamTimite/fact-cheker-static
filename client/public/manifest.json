@@ -1,0 +1,25 @@
+{
+  "short_name": "WeYeCheck",
+  "name": "WeYeCheck - Vérification d'Informations",
+  "icons": [
+    {
+      "src": "favicon-16x16.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "favicon-32x32.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#EA580C",
+  "background_color": "#ffffff"
+}

@@ -1,0 +1,7 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with orange gradient -->
+  <rect width="16" height="16" rx="4" fill="#EA580C"/>
+  
+  <!-- Zap icon -->
+  <path d="M6 3L10 7H8L9 13L5 9H7L6 3Z" fill="white" stroke="white" stroke-width="0.3" stroke-linejoin="round"/>
+</svg>
