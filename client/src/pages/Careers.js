@@ -5,16 +5,15 @@ import {
   MapPin, 
   Clock, 
   Users, 
-  Zap, 
   Send, 
-  CheckCircle,
   ArrowRight,
   Heart,
   Shield,
   Brain,
-  Code,
   Globe,
-  Award
+  Award,
+  Zap,
+  CheckCircle
 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 

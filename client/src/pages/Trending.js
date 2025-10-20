@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, TrendingDown, Minus, Flame, Clock, Users, Eye, Share2 } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Flame, Clock, Users, Eye } from 'lucide-react';
 import { mockTrendingTopics, mockFactChecks, mockStats } from '../data/mockData';
 import FactCheckCard from '../components/FactCheckCard';
 

@@ -2,17 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   Users, 
-  Award, 
   Github, 
   Linkedin, 
   Twitter, 
-  Mail, 
   MapPin, 
   Calendar,
-  Zap,
   Shield,
   Brain,
-  Code,
   Heart
 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
