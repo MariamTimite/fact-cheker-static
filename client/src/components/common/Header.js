@@ -39,14 +39,14 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-blue-200/20 dark:border-gray-700/20 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-16 px-2 sm:px-0">
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
                 <Zap className="w-5 h-5 text-white" />
               </div>
-                              <span className="text-xl font-bold text-orange-600">WeYeCheck</span>
+                              <span className="text-lg sm:text-xl font-bold text-orange-600">WeYeCheck</span>
             </Link>
           </div>
 
@@ -134,16 +134,16 @@ const Header = () => {
                 )}
               </div>
             ) : (
-              <div className="flex items-center space-x-2">
+              <div className="hidden sm:flex items-center space-x-2">
                 <Link
                   to="/login"
-                  className="px-4 py-2 text-sm font-medium text-orange-600 border border-orange-600 rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200"
+                  className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-orange-600 border border-orange-600 rounded-lg hover:bg-orange-600 hover:text-white transition-all duration-200"
                 >
                   Connexion
                 </Link>
                 <Link
                   to="/register"
-                  className="px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-lg hover:bg-orange-700 transition-all duration-200"
+                  className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white bg-orange-600 rounded-lg hover:bg-orange-700 transition-all duration-200"
                 >
                   S'inscrire
                 </Link>
@@ -153,31 +153,73 @@ const Header = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-700 rounded-lg transition-all duration-200"
+              className="md:hidden p-3 text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-700 rounded-lg transition-all duration-200 border border-gray-200 dark:border-gray-600"
+              aria-label="Menu de navigation"
             >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
-            <nav className="flex flex-col space-y-2">
+          <div className="md:hidden py-6 px-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
+            <nav className="flex flex-col space-y-3">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
                     item.current
-                      ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-300 hover:bg-blue-50 dark:hover:bg-gray-700'
+                      ? 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300'
+                      : 'text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-700'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile User Actions */}
+              {isAuthenticated ? (
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-600 space-y-3">
+                  <Link
+                    to="/profile"
+                    className="flex items-center px-4 py-3 text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-700 rounded-lg transition-all duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <User className="w-5 h-5 mr-3" />
+                    Mon Profil
+                  </Link>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setIsMenuOpen(false);
+                    }}
+                    className="flex items-center w-full px-4 py-3 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200"
+                  >
+                    <LogOut className="w-5 h-5 mr-3" />
+                    Déconnexion
+                  </button>
+                </div>
+              ) : (
+                <div className="pt-4 border-t border-gray-200 dark:border-gray-600 space-y-3">
+                  <Link
+                    to="/login"
+                    className="block px-4 py-3 text-orange-600 dark:text-orange-400 border border-orange-600 dark:border-orange-400 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-200 text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Connexion
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="block px-4 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-all duration-200 text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    S'inscrire
+                  </Link>
+                </div>
+              )}
             </nav>
           </div>
         )}
